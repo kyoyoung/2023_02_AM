@@ -49,7 +49,39 @@ public class Main {
 
 				System.out.println(id + "번 글이 생성되었습니다");
 				lastArticleId++;
-			} else {
+			} else if (command.startsWith("article detail ")) {
+
+				String[] cmdBits = command.split(" "); // article / detail / 1
+				// cmdBits[0] -> article
+				// cmdBits[1] -> detail
+				// cmdBits[2] -> ~
+
+				int id = Integer.parseInt(cmdBits[2]);
+
+				// article detail 1 => "1" => 1
+
+				boolean found = false;
+
+				for (int i = 0; i < articles.size(); i++) {
+					// 0 , 1 , 2 -> index
+					// 1 , 2 , 3 -> id
+					Article article = articles.get(i);
+					if (article.id == id) {
+						found = true;
+						break;
+					}
+				}
+
+				if (found == false) {
+					System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
+					continue;
+				}
+
+				System.out.printf("%d번 글 있던데?\n", id);
+
+			}
+
+			else {
 				System.out.println("존재하지 않는 명령어 입니다");
 			}
 		}
