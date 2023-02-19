@@ -51,33 +51,29 @@ public class Main {
 				lastArticleId++;
 			} else if (command.startsWith("article detail ")) {
 
-				String[] cmdBits = command.split(" "); // article / detail / 1
-				// cmdBits[0] -> article
-				// cmdBits[1] -> detail
-				// cmdBits[2] -> ~
+				String[] cmdBits = command.split(" ");
 
 				int id = Integer.parseInt(cmdBits[2]);
 
-				// article detail 1 => "1" => 1
-
-				boolean found = false;
+				Article foundArticle = null;
 
 				for (int i = 0; i < articles.size(); i++) {
-					// 0 , 1 , 2 -> index
-					// 1 , 2 , 3 -> id
 					Article article = articles.get(i);
 					if (article.id == id) {
-						found = true;
+						foundArticle = article;
 						break;
 					}
 				}
 
-				if (found == false) {
+				if (foundArticle == null) {
 					System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
 					continue;
 				}
 
-				System.out.printf("%d번 글 있던데?\n", id);
+				System.out.printf("번호 : %d\n", foundArticle.id);
+				System.out.printf("날짜 : 2023-12-12 12:12:12\n");
+				System.out.printf("제목 : %s\n", foundArticle.title);
+				System.out.printf("내용 : %s\n", foundArticle.body);
 
 			}
 
@@ -102,5 +98,3 @@ class Article {
 		this.title = title;
 		this.body = body;
 	}
-
-}
