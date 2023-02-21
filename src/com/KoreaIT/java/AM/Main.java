@@ -19,7 +19,7 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 
-		int lastArticleId = 0;
+		int lastArticleId = 3;
 
 		while (true) {
 			System.out.printf("명령어 ) ");
@@ -157,7 +157,9 @@ public class Main {
 
 	static void makeTestData() {
 		System.out.println("테스트를 위한 데이터를 생성합니다");
-
+		articles.add(new Article(1, Util.getNowDateTimeStr(), "제목1", "내용1", 11));
+		articles.add(new Article(2, Util.getNowDateTimeStr(), "제목2", "내용2", 22));
+		articles.add(new Article(3, Util.getNowDateTimeStr(), "제목3", "내용3", 33));
 	}
 }
 
@@ -169,11 +171,15 @@ class Article {
 	int hit;
 
 	Article(int id, String regDate, String title, String body) {
+		this(id, regDate, title, body, 0);
+	}
+
+	Article(int id, String regDate, String title, String body, int hit) {
 		this.id = id;
 		this.regDate = regDate;
 		this.title = title;
 		this.body = body;
-		this.hit = 0;
+		this.hit = hit;
 	}
 
 	void increaseHit() {
