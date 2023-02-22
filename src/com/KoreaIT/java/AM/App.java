@@ -30,7 +30,7 @@ public class App {
 		int lastArticleId = 3;
 
 		MemberController memberController = new MemberController(members, sc);
-		ArticleController articleController = new ArticleController();
+		new ArticleController();
 
 		while (true) {
 			System.out.printf("명령어 ) ");
