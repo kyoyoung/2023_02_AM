@@ -30,7 +30,8 @@ public class App {
 		int lastArticleId = 3;
 
 		MemberController memberController = new MemberController(members, sc);
-		ArticleController articleController= new ArticleController(articles, sc);
+		ArticleController articleController = new ArticleController();
+
 		while (true) {
 			System.out.printf("명령어 ) ");
 			String command = sc.nextLine().trim();
@@ -172,5 +173,4 @@ public class App {
 		articles.add(new Article(2, Util.getNowDateTimeStr(), "제목2", "내용2", 22));
 		articles.add(new Article(3, Util.getNowDateTimeStr(), "제목3", "내용3", 33));
 	}
-
 }
