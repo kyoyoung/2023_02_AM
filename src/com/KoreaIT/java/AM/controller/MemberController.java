@@ -6,10 +6,12 @@ import java.util.Scanner;
 import com.KoreaIT.java.AM.dto.Member;
 import com.KoreaIT.java.AM.util.Util;
 
-public class MemberController {
+public class MemberController extends Controller {
 
 	private List<Member> members;
 	private Scanner sc;
+	private String command;
+	private String actionMethodName;
 
 	public MemberController(List<Member> members, Scanner sc) {
 		this.members = members;
@@ -17,6 +19,17 @@ public class MemberController {
 	}
 
 	int lastMemberId = 0;
+
+	public void doAction(String command, String actionMethodName) {
+		this.command = command;
+		this.actionMethodName = actionMethodName;
+
+		switch (actionMethodName) {
+		case "join":
+			doJoin();
+			break;
+		}
+	}
 
 	public void doJoin() {
 		int id = lastMemberId + 1;
